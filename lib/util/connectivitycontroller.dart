@@ -9,8 +9,16 @@ class ConnectivityController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    _checkConnection();
     _connectivity.onConnectivityChanged.listen((result) {
       isConnected.value = (result == ConnectivityResult.mobile||result==ConnectivityResult.wifi);
     });
+
   }
+  Future<void> _checkConnection() async {
+    final result = await _connectivity.checkConnectivity();
+    isConnected.value = (result == ConnectivityResult.mobile||result==ConnectivityResult.wifi);
+    return _checkConnection();
+  }
+
 }

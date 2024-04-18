@@ -19,6 +19,9 @@ class DealViewModel extends GetxController  {
   @override
   void onInit() {
     super.onInit();
+    if(_connectivityController.isConnected.value){
+      refresh();
+    }
     _connectivityController.isConnected.listen((isConnected) {
       if (isConnected) {
         refresh();

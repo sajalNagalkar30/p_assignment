@@ -157,7 +157,7 @@ class _TopDealsScreenState extends State<TopDealsScreen> {
               ),
               Spacer(),
               Text(
-                'At other',
+                _postViewModel.deals[index].store?.name ?? 'At other',
                 style: TextStyle(fontSize: 14, color: Colors.lightBlue),
               ),
             ],
